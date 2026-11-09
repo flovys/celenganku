@@ -1,0 +1,68 @@
+/* --- TAMBAHAN UNTUK HALAMAN RIWAYAT & LAPORAN --- */
+
+.riwayat-layout { display: block; }
+.page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-lg); }
+.page-header h2 { font-size: 1.8rem; margin-bottom: var(--space-xs); }
+.date-picker { display: flex; align-items: center; gap: var(--space-xs); border: 1px solid var(--color-border); padding: 8px 16px; border-radius: var(--radius-sm); background: var(--color-surface); }
+.select-clean { border: none; outline: none; background: transparent; font-weight: 600; cursor: pointer; }
+
+/* Summary Grid */
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-bottom: var(--space-sm); }
+.summary-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+.summary-card.bg-primary { background: var(--color-primary); color: white; border: none; }
+.summary-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; font-weight: 500; margin-bottom: var(--space-md); color: var(--color-text-muted); }
+.summary-card.bg-primary .summary-header { color: white; opacity: 0.9; }
+.summary-card h3 { font-size: 1.5rem; }
+.summary-card .text-large { font-size: 1.8rem; }
+.icon-green { color: var(--color-primary); font-weight: bold; }
+.icon-red { color: #ef4444; font-weight: bold; }
+.info-text { font-size: 0.85rem; margin-bottom: var(--space-xl); }
+
+/* Details Layout (2 Columns) */
+.details-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--space-xl); align-items: start; }
+.section-title { font-size: 1.25rem; margin-bottom: var(--space-md); }
+.card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+
+/* Donut Chart Simulation */
+.allocation-header { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: var(--space-lg); padding-bottom: var(--space-sm); border-bottom: 1px solid var(--color-border); }
+.chart-container { display: flex; flex-direction: column; gap: var(--space-lg); }
+.donut-chart { width: 160px; height: 160px; border-radius: 50%; background: conic-gradient(var(--color-primary) 0% 57.1%, #94a3b8 57.1% 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.donut-inner { width: 120px; height: 120px; background: var(--color-surface); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.donut-inner strong { font-size: 1.8rem; }
+.donut-inner span { font-size: 0.85rem; color: var(--color-text-muted); }
+
+/* Legends */
+.legend-item { display: flex; gap: var(--space-sm); align-items: flex-start; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; }
+.bg-secondary { background-color: #94a3b8; }
+.legend-info { flex: 1; }
+.legend-value { display: flex; justify-content: space-between; margin-top: 2px; }
+.text-primary { color: var(--color-primary); font-weight: 600; }
+
+/* Transactions */
+.filters-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-lg); }
+.filter-buttons { display: flex; gap: var(--space-xs); }
+.filter-buttons .btn-chip { background: transparent; }
+.filter-buttons .btn-chip.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+.filter-selects { display: flex; gap: var(--space-sm); }
+.input-select { padding: 8px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); outline: none; }
+
+.transaction-list { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-md) var(--space-lg); }
+.date-header { font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-md); }
+.transaction-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-md); margin-bottom: var(--space-md); border-bottom: 1px solid var(--color-border); }
+.transaction-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.trx-left { display: flex; gap: var(--space-md); align-items: center; }
+.trx-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
+.trx-details { display: flex; flex-direction: column; }
+.trx-details strong { font-size: 0.95rem; }
+.trx-details span { font-size: 0.8rem; }
+.error-bg { background-color: #fee2e2; }
+.error-text { color: #ef4444; }
+
+/* Responsiveness tambahan untuk halaman Riwayat */
+@media (max-width: 860px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .details-layout { grid-template-columns: 1fr; }
+    .filters-container { flex-direction: column; align-items: stretch; }
+    .filter-selects { display: grid; grid-template-columns: 1fr 1fr; }
+}

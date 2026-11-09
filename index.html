@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celenganku Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TOP NAVIGATION -->
+    <header class="web-header">
+        <div class="header-container">
+            <div class="brand">
+                <span class="logo-icon">💼</span>
+                <span class="app-title">Celenganku</span>
+            </div>
+            
+            <nav class="top-nav">
+                <a href="#" class="nav-item active">Beranda</a>
+                <a href="#" class="nav-item">Target</a>
+                <a href="riwayat.html" class="nav-item">Riwayat</a>
+            </nav>
+
+            <div class="user-profile">
+                <button class="icon-btn" aria-label="Notifikasi">🔔</button>
+                <div class="user-info">
+                    <span class="greeting">Halo, Fikri!</span>
+                </div>
+                <div class="avatar">FA</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="dashboard-container">
+        <!-- Kolom Kiri: Ringkasan -->
+        <aside class="dashboard-sidebar">
+            <section class="total-balance-card">
+                <div class="card-header">
+                    <p>Total tabungan</p>
+                    <span>💳</span>
+                </div>
+                <h2 id="total-balance">Rp5.250.000</h2>
+                <p class="subtitle">2 target aktif · Selangkah lebih dekat</p>
+                <button class="btn-light" onclick="openSetorModal('Dana Umum', 0)">+ Setor Tabungan</button>
+            </section>
+        </aside>
+
+        <!-- Kolom Kanan: Daftar Target -->
+        <section class="dashboard-content">
+            <div class="section-heading">
+                <h3>Target tabungan</h3>
+                <span class="badge">2 aktif</span>
+            </div>
+
+            <div class="targets-grid">
+                <!-- Target 1: Dana Darurat -->
+                <article class="target-card">
+                    <div class="target-header">
+                        <div class="target-info">
+                            <div class="target-icon">🛡️</div>
+                            <div class="target-details">
+                                <h4>Dana Darurat</h4>
+                                <p class="target-amount" id="darurat-amount">Rp3.000.000</p>
+                            </div>
+                        </div>
+                        <button class="btn-secondary-outline" onclick="openSetorModal('Dana Darurat', 3000000)">+ Setor</button>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-stats">
+                            <span class="muted">dari Rp10.000.000</span>
+                            <span class="percent" id="darurat-percent">30%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-fill" id="darurat-progress" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Target 2: Laptop Impian -->
+                <article class="target-card">
+                    <div class="target-header">
+                        <div class="target-info">
+                            <div class="target-icon">💻</div>
+                            <div class="target-details">
+                                <h4>Laptop Impian</h4>
+                                <p class="target-amount">Rp2.250.000</p>
+                            </div>
+                        </div>
+                        <button class="btn-secondary-outline">+ Setor</button>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-stats">
+                            <span class="muted">dari Rp7.500.000</span>
+                            <span class="percent">30%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-fill" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <button class="btn-secondary btn-block mt-lg">+ Buat Target Baru</button>
+        </section>
+    </main>
+
+    <!-- MODAL FORM SETOR (Desktop Centered) -->
+    <dialog id="modal-setor" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3>Detail Setoran</h3>
+                <button class="btn-close" onclick="closeSetorModal()">✕</button>
+            </header>
+            
+            <div class="form-group">
+                <label>Nominal setoran</label>
+                <div class="input-currency">
+                    <span>Rp</span>
+                    <input type="number" id="input-nominal" placeholder="0" min="10000">
+                </div>
+                <small>Minimal setoran Rp10.000</small>
+            </div>
+
+            <div class="quick-amounts">
+                <button class="btn-chip" onclick="setNominal(50000)">Rp50.000</button>
+                <button class="btn-chip" onclick="setNominal(100000)">Rp100.000</button>
+                <button class="btn-chip" onclick="setNominal(250000)">Rp250.000</button>
+            </div>
+
+            <div class="preview-box">
+                <h4>Pratinjau setoran</h4>
+                <div class="preview-row"><span>Tujuan</span> <strong id="preview-tujuan">Dana Darurat</strong></div>
+                <div class="preview-row"><span>Nominal setoran</span> <strong id="preview-nominal" class="text-green">Rp0</strong></div>
+                <div class="preview-row"><span>Saldo setelah setoran</span> <strong id="preview-saldo">Rp3.000.000</strong></div>
+            </div>
+
+            <button class="btn-primary btn-block" id="btn-konfirmasi" disabled onclick="konfirmasiSetoran()">Konfirmasi Setoran</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL SUKSES -->
+    <dialog id="modal-sukses" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✔️</div>
+            <h2>Setoran berhasil</h2>
+            <p id="success-desc" class="muted mt-sm">Rp100.000 ditambahkan ke Dana Darurat</p>
+            
+            <div class="success-card">
+                <p>Tabungan Dana Darurat sekarang</p>
+                <h3 id="success-new-balance">Rp3.100.000</h3>
+            </div>
+            
+            <button class="btn-primary btn-block" onclick="tutupSukses()">Tutup & Kembali</button>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
