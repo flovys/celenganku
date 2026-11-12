@@ -26,26 +26,26 @@ function openSetorModal(targetName, currentSaved) {
     document.getElementById('preview-tujuan').innerText = targetName;
     document.getElementById('preview-saldo').innerText = formatRupiah(currentSaved);
     
-    inputNominal.value = '';
+    if(inputNominal) inputNominal.value = '';
     updatePreview();
     resetChips();
     
-    modalSetor.showModal();
+    if(modalSetor) modalSetor.showModal();
 }
 
 // Tutup Modal Setor
 function closeSetorModal() {
-    modalSetor.close();
+    if(modalSetor) modalSetor.close();
 }
 
 // Interaksi Tombol Chip (Nominal Cepat)
-function setNominal(amount) {
+function setNominal(amount, targetElement) {
     state.inputNominal = amount;
-    inputNominal.value = amount;
+    if(inputNominal) inputNominal.value = amount;
     updatePreview();
     
     resetChips();
-    event.target.classList.add('active');
+    if(targetElement) targetElement.classList.add('active');
 }
 
 function resetChips() {
@@ -53,24 +53,28 @@ function resetChips() {
 }
 
 // Validasi Input Nominal Manual
-inputNominal.addEventListener('input', (e) => {
-    let val = parseInt(e.target.value);
-    state.inputNominal = isNaN(val) ? 0 : val;
-    resetChips();
-    updatePreview();
-});
+if(inputNominal) {
+    inputNominal.addEventListener('input', (e) => {
+        let val = parseInt(e.target.value);
+        state.inputNominal = isNaN(val) ? 0 : val;
+        resetChips();
+        updatePreview();
+    });
+}
 
 // Update Teks Pratinjau
 function updatePreview() {
     const nominalElement = document.getElementById('preview-nominal');
     const saldoElement = document.getElementById('preview-saldo');
     
+    if (!nominalElement || !saldoElement) return;
+
     if (state.inputNominal >= 10000) {
-        btnKonfirmasi.disabled = false;
+        if(btnKonfirmasi) btnKonfirmasi.disabled = false;
         nominalElement.innerText = '+' + formatRupiah(state.inputNominal);
         saldoElement.innerText = formatRupiah(state.activeTargetCurrent + state.inputNominal);
     } else {
-        btnKonfirmasi.disabled = true;
+        if(btnKonfirmasi) btnKonfirmasi.disabled = true;
         nominalElement.innerText = 'Rp0';
         saldoElement.innerText = formatRupiah(state.activeTargetCurrent);
     }
@@ -78,7 +82,7 @@ function updatePreview() {
 
 // Eksekusi Konfirmasi Setoran
 function konfirmasiSetoran() {
-    modalSetor.close();
+    if(modalSetor) modalSetor.close();
     
     // Update State
     state.totalBalance += state.inputNominal;
@@ -96,9 +100,33 @@ function konfirmasiSetoran() {
     document.getElementById('success-desc').innerText = `${formatRupiah(state.inputNominal)} ditambahkan ke ${state.activeTargetName}`;
     document.getElementById('success-new-balance').innerText = formatRupiah(state.activeTargetCurrent);
     
-    modalSukses.showModal();
+    if(modalSukses) modalSukses.showModal();
 }
 
 function tutupSukses() {
-    modalSukses.close();
+    if(modalSukses) modalSukses.close();
 }
+
+// --- EVENT LISTENERS (Pengganti Handler Inline) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const btnSetorUmum = document.getElementById('btn-setor-umum');
+    const btnSetorDarurat = document.getElementById('btn-setor-darurat');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnTutupSukses = document.getElementById('btn-tutup-sukses');
+    
+    // Hubungkan tombol ke fungsi
+    if(btnSetorUmum) btnSetorUmum.addEventListener('click', () => openSetorModal('Dana Umum', 0));
+    if(btnSetorDarurat) btnSetorDarurat.addEventListener('click', () => openSetorModal('Dana Darurat', 3000000));
+    if(btnCloseModal) btnCloseModal.addEventListener('click', closeSetorModal);
+    if(btnKonfirmasi) btnKonfirmasi.addEventListener('click', konfirmasiSetoran);
+    if(btnTutupSukses) btnTutupSukses.addEventListener('click', tutupSukses);
+
+    // Hubungkan tombol chip nominal
+    const chips = document.querySelectorAll('.btn-chip[data-nominal]');
+    chips.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const amount = parseInt(e.target.getAttribute('data-nominal'));
+            if(amount) setNominal(amount, e.target);
+        });
+    });
+});

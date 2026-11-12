@@ -17,9 +17,3 @@ Proyek ini dibangun menggunakan **HTML5**, **CSS3**, dan **Vanilla JavaScript** 
 - **HTML5** (Struktur semantik)
 - **CSS3** (Kustom variabel `--color`, Flexbox, CSS Grid, Media Queries)
 - **JavaScript (Vanilla)** (Manipulasi DOM dan interaktivitas UI)
-
-## 🚀 Cara Menjalankan Secara Lokal
-
-1. *Clone* repositori ini ke komputer Anda:
-   ```bash
-   git clone [https://github.com/username-anda/celenganku.git](https://github.com/username-anda/celenganku.git)
