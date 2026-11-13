@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celenganku Dashboard</title>
+    <title>Celenganku 🎀 Dashboard</title>
+    <!-- Google Fonts untuk nuansa Coquette -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,20 +13,20 @@
     <header class="web-header">
         <div class="header-container">
             <div class="brand">
-                <span class="logo-icon">💼</span>
-                <h1 class="app-title" style="font-size: inherit; font-weight: inherit; margin: 0;">Celenganku</h1>
+                <span class="logo-icon">🎀</span>
+                <h1 class="app-title">Celenganku</h1>
             </div>
             
             <nav class="top-nav" id="top-nav">
-                <a href="index.html" class="nav-item active">Beranda</a>
-                <a href="#" class="nav-item">Target</a>
-                <a href="riwayat.html" class="nav-item">Riwayat</a>
+                <a href="index.html" class="nav-item active">✨ Beranda</a>
+                <a href="#target-section" class="nav-item">🩰 Target</a>
+                <a href="riwayat.html" class="nav-item">💌 Riwayat</a>
             </nav>
 
             <div class="user-profile">
                 <button class="icon-btn" aria-label="Notifikasi">🔔</button>
                 <div class="user-info">
-                    <span class="greeting">Halo, Fikri!</span>
+                    <span class="greeting">Halo, Fikri! 🌸</span>
                 </div>
                 <div class="avatar">FA</div>
                 <button class="hamburger-btn" id="btn-hamburger" aria-label="Buka Menu">☰</button>
@@ -34,23 +36,59 @@
 
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="dashboard-container">
-        <!-- Kolom Kiri: Ringkasan -->
+        <!-- Kolom Kiri: Ringkasan, Afirmasi & Tantangan -->
         <aside class="dashboard-sidebar">
+            <!-- Kartu Saldo Utama -->
             <section class="total-balance-card">
                 <div class="card-header">
-                    <p>Total tabungan</p>
-                    <span>💳</span>
+                    <p>✨ Total tabunganmu</p>
+                    <span>🎀</span>
                 </div>
                 <h2 id="total-balance">Rp5.250.000</h2>
-                <p class="subtitle">2 target aktif · Selangkah lebih dekat</p>
-                <button class="btn-light" id="btn-setor-umum">+ Setor Tabungan</button>
+                <p class="subtitle">2 target aktif · Selangkah lebih dekat menuju impianmu 🌷</p>
+                <button class="btn-light" id="btn-setor-umum">+ Setor Tabungan 💌</button>
+            </section>
+
+            <!-- Kartu Afirmasi Harian (Mengisi ruang kosong di sidebar) -->
+            <section class="coquette-widget quote-widget">
+                <div class="widget-ribbon">🦢 Daily Note</div>
+                <p class="quote-text">"Romanticize your savings journey. Sedikit demi sedikit, semua wishlist manis itu akan jadi milikmu."</p>
+                <div class="streak-badge">
+                    <span>🌸 Saving Streak: <strong>14 Hari Berturut-turut!</strong></span>
+                </div>
+            </section>
+
+            <!-- Mini Savings Challenge Interaktif -->
+            <section class="coquette-widget challenge-widget">
+                <div class="widget-header">
+                    <h3>🍰 Sweet Weekly Bingo</h3>
+                    <span class="badge-mini">Minggu Ini</span>
+                </div>
+                <p class="muted small-text">Klik kotak tabungan kecil yang sudah kamu selesaikan minggu ini:</p>
+                <div class="bingo-grid">
+                    <button class="bingo-box done">Rp10rb 🎀</button>
+                    <button class="bingo-box done">Rp20rb 🌸</button>
+                    <button class="bingo-box">Rp25rb 🍓</button>
+                    <button class="bingo-box">Rp50rb 🩰</button>
+                    <button class="bingo-box">No Spend 🍵</button>
+                    <button class="bingo-box">Receh 🧁</button>
+                </div>
             </section>
         </aside>
 
-        <!-- Kolom Kanan: Daftar Target -->
-        <section class="dashboard-content">
+        <!-- Kolom Kanan: Banner, Daftar Target, Aktivitas & Wishlist -->
+        <section class="dashboard-content" id="target-section">
+            <!-- Banner Sambutan Manis -->
+            <div class="welcome-banner">
+                <div class="banner-text">
+                    <h2>Keep Glowing & Saving! 🌷</h2>
+                    <p>Bulan ini kamu sudah menyisihkan <strong>Rp1.250.000</strong>. Konsistensimu luar biasa manis!</p>
+                </div>
+                <div class="banner-illustration">🩰🦢🎀</div>
+            </div>
+
             <div class="section-heading">
-                <h2>Target tabungan</h2>
+                <h2>Target Tabungan 🎀</h2>
                 <span class="badge">2 aktif</span>
             </div>
 
@@ -59,13 +97,13 @@
                 <article class="target-card">
                     <div class="target-header">
                         <div class="target-info">
-                            <div class="target-icon">🛡️</div>
+                            <div class="target-icon">🦢</div>
                             <div class="target-details">
                                 <h3>Dana Darurat</h3>
                                 <p class="target-amount" id="darurat-amount">Rp3.000.000</p>
                             </div>
                         </div>
-                        <button class="btn-secondary-outline" id="btn-setor-darurat">+ Setor</button>
+                        <button class="btn-secondary-outline" id="btn-setor-darurat">+ Setor 🎀</button>
                     </div>
                     
                     <div class="progress-section">
@@ -86,43 +124,98 @@
                             <div class="target-icon">💻</div>
                             <div class="target-details">
                                 <h3>Laptop Impian</h3>
-                                <p class="target-amount">Rp2.250.000</p>
+                                <p class="target-amount" id="laptop-amount">Rp2.250.000</p>
                             </div>
                         </div>
-                        <button class="btn-secondary-outline">+ Setor</button>
+                        <button class="btn-secondary-outline" id="btn-setor-laptop">+ Setor 🎀</button>
                     </div>
                     
                     <div class="progress-section">
                         <div class="progress-stats">
                             <span class="muted">dari Rp7.500.000</span>
-                            <span class="percent">30%</span>
+                            <span class="percent" id="laptop-percent">30%</span>
                         </div>
                         <div class="progress-bar-container">
-                            <div class="progress-fill" style="width: 30%;"></div>
+                            <div class="progress-fill" id="laptop-progress" style="width: 30%;"></div>
                         </div>
                     </div>
                 </article>
             </div>
             
-            <button class="btn-secondary btn-block mt-lg">+ Buat Target Baru</button>
+            <button class="btn-secondary btn-block mt-lg">+ Buat Target Impian Baru ✨</button>
+
+            <!-- Bagian Tambahan agar Layar Lebar Penuh & Estetik -->
+            <div class="bottom-widgets-grid mt-lg">
+                <!-- Widget Kiri: Aktivitas Terakhir -->
+                <div class="coquette-widget">
+                    <div class="widget-header">
+                        <h3>💌 Catatan Setoran Terakhir</h3>
+                        <a href="riwayat.html" class="link-cute">Lihat semua →</a>
+                    </div>
+                    <div class="mini-trx-list" id="recent-trx-list">
+                        <div class="mini-trx-item">
+                            <div class="mini-trx-left">
+                                <span class="mini-icon">🦢</span>
+                                <div>
+                                    <strong>Setor ke Dana Darurat</strong>
+                                    <small class="muted">28 Okt · 09.41 WIB</small>
+                                </div>
+                            </div>
+                            <span class="amount-plus">+Rp100.000</span>
+                        </div>
+                        <div class="mini-trx-item">
+                            <div class="mini-trx-left">
+                                <span class="mini-icon">💻</span>
+                                <div>
+                                    <strong>Setor ke Laptop Impian</strong>
+                                    <small class="muted">28 Okt · 08.15 WIB</small>
+                                </div>
+                            </div>
+                            <span class="amount-plus">+Rp50.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Widget Kanan: Future Wishlist -->
+                <div class="coquette-widget">
+                    <div class="widget-header">
+                        <h3>🩰 Wishlist Berikutnya</h3>
+                        <span class="badge-mini">Segera</span>
+                    </div>
+                    <div class="wishlist-items">
+                        <div class="wishlist-row">
+                            <span>🎧 Headphone Pink Pastel</span>
+                            <strong>Rp850.000</strong>
+                        </div>
+                        <div class="wishlist-row">
+                            <span>🌸 Liburan Akhir Tahun</span>
+                            <strong>Rp3.500.000</strong>
+                        </div>
+                        <div class="wishlist-row">
+                            <span>🌷 Kamera Digital Vintage</span>
+                            <strong>Rp1.800.000</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- MODAL FORM SETOR (Desktop Centered) -->
+    <!-- MODAL FORM SETOR -->
     <dialog id="modal-setor" class="modal">
         <div class="modal-content">
             <header class="modal-header">
-                <h2>Detail Setoran</h2>
+                <h2>🎀 Detail Setoran</h2>
                 <button class="btn-close" id="btn-close-modal">✕</button>
             </header>
             
             <div class="form-group">
-                <label for="input-nominal">Nominal setoran</label>
+                <label for="input-nominal">Nominal setoran manis hari ini</label>
                 <div class="input-currency">
                     <span>Rp</span>
                     <input type="number" id="input-nominal" placeholder="0" min="10000">
                 </div>
-                <small>Minimal setoran Rp10.000</small>
+                <small class="muted">Minimal setoran Rp10.000 🌸</small>
             </div>
 
             <div class="quick-amounts">
@@ -132,29 +225,29 @@
             </div>
 
             <div class="preview-box">
-                <h3>Pratinjau setoran</h3>
+                <h3>✨ Pratinjau Setoran</h3>
                 <div class="preview-row"><span>Tujuan</span> <strong id="preview-tujuan">Dana Darurat</strong></div>
-                <div class="preview-row"><span>Nominal setoran</span> <strong id="preview-nominal" class="text-green">Rp0</strong></div>
-                <div class="preview-row"><span>Saldo setelah setoran</span> <strong id="preview-saldo">Rp3.000.000</strong></div>
+                <div class="preview-row"><span>Nominal setoran</span> <strong id="preview-nominal" class="text-pink">Rp0</strong></div>
+                <div class="preview-row"><span>Saldo target setelah setoran</span> <strong id="preview-saldo">Rp3.000.000</strong></div>
             </div>
 
-            <button class="btn-primary btn-block" id="btn-konfirmasi" disabled>Konfirmasi Setoran</button>
+            <button class="btn-primary btn-block" id="btn-konfirmasi" disabled>Konfirmasi Setoran 💌</button>
         </div>
     </dialog>
 
     <!-- MODAL SUKSES -->
     <dialog id="modal-sukses" class="modal">
         <div class="modal-content success-content">
-            <div class="success-icon">✔️</div>
-            <h2>Setoran berhasil</h2>
+            <div class="success-icon">🎀</div>
+            <h2>Yeay! Setoran Berhasil ✨</h2>
             <p id="success-desc" class="muted mt-sm">Rp100.000 ditambahkan ke Dana Darurat</p>
             
             <div class="success-card">
-                <p>Tabungan Dana Darurat sekarang</p>
+                <p id="success-label">Tabunganmu sekarang</p>
                 <h3 id="success-new-balance">Rp3.100.000</h3>
             </div>
             
-            <button class="btn-primary btn-block" id="btn-tutup-sukses">Tutup & Kembali</button>
+            <button class="btn-primary btn-block" id="btn-tutup-sukses">Tutup & Kembali 🌸</button>
         </div>
     </dialog>
 
