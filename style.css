@@ -276,8 +276,77 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 
+/* Tombol Hamburger (Sembunyikan di layar Desktop) */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    width: 38px;
+    height: 38px;
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.hamburger-btn:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
 /* Responsiveness */
 @media (max-width: 860px) {
-    .dashboard-container { grid-template-columns: 1fr; }
-    .top-nav { display: none; } /* Pada mobile web sesungguhnya, ini diganti hamburger menu */
+    .dashboard-container { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .header-container {
+        position: relative;
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .top-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-surface);
+        flex-direction: column;
+        gap: 0;
+        padding: var(--space-sm) var(--space-md);
+        border-bottom: 1px solid var(--color-border);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        z-index: 99;
+    }
+
+    .top-nav.show {
+        display: flex;
+    }
+
+    .nav-item {
+        padding: 12px var(--space-sm);
+        border-radius: var(--radius-sm);
+    }
+
+    .nav-item:hover, 
+    .nav-item.active {
+        background-color: var(--color-primary-light);
+    }
+
+    .targets-grid {
+        grid-template-columns: 1fr;
+    }
 }

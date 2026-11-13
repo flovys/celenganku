@@ -129,4 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if(amount) setNominal(amount, e.target);
         });
     });
+
+    // --- Toggle Hamburger Menu Mobile ---
+    const btnHamburger = document.getElementById('btn-hamburger');
+    const topNav = document.getElementById('top-nav');
+
+    if (btnHamburger && topNav) {
+        btnHamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = topNav.classList.toggle('show');
+            btnHamburger.innerText = isOpen ? '✕' : '☰';
+        });
+
+        // Tutup menu otomatis jika pengguna klik di luar area menu
+        document.addEventListener('click', (e) => {
+            if (!topNav.contains(e.target) && !btnHamburger.contains(e.target)) {
+                topNav.classList.remove('show');
+                btnHamburger.innerText = '☰';
+            }
+        });
+    }
 });

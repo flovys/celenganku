@@ -61,6 +61,7 @@
 
 /* Responsiveness tambahan untuk halaman Riwayat */
 @media (max-width: 860px) {
+    .page-header { flex-direction: column; gap: var(--space-sm); }
     .summary-grid { grid-template-columns: 1fr; }
     .details-layout { grid-template-columns: 1fr; }
     .filters-container { flex-direction: column; align-items: stretch; }
