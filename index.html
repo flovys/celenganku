@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celenganku 🎀 Dashboard</title>
-    <!-- Google Fonts untuk nuansa Coquette -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,12 +18,12 @@
             
             <nav class="top-nav" id="top-nav">
                 <a href="index.html" class="nav-item active">✨ Beranda</a>
-                <a href="#target-section" class="nav-item">🩰 Target</a>
+                <a href="index.html#target-section" class="nav-item">🩰 Target</a>
                 <a href="riwayat.html" class="nav-item">💌 Riwayat</a>
             </nav>
 
             <div class="user-profile">
-                <button class="icon-btn" aria-label="Notifikasi">🔔</button>
+                <button class="icon-btn" id="btn-reset-data" title="Reset Data ke Awal" aria-label="Reset Data">🔄</button>
                 <div class="user-info">
                     <span class="greeting">Halo, Fikri! 🌸</span>
                 </div>
@@ -38,7 +37,6 @@
     <main class="dashboard-container">
         <!-- Kolom Kiri: Ringkasan, Afirmasi & Tantangan -->
         <aside class="dashboard-sidebar">
-            <!-- Kartu Saldo Utama -->
             <section class="total-balance-card">
                 <div class="card-header">
                     <p>✨ Total tabunganmu</p>
@@ -49,7 +47,6 @@
                 <button class="btn-light" id="btn-setor-umum">+ Setor Tabungan 💌</button>
             </section>
 
-            <!-- Kartu Afirmasi Harian (Mengisi ruang kosong di sidebar) -->
             <section class="coquette-widget quote-widget">
                 <div class="widget-ribbon">🦢 Daily Note</div>
                 <p class="quote-text">"Romanticize your savings journey. Sedikit demi sedikit, semua wishlist manis itu akan jadi milikmu."</p>
@@ -58,7 +55,6 @@
                 </div>
             </section>
 
-            <!-- Mini Savings Challenge Interaktif -->
             <section class="coquette-widget challenge-widget">
                 <div class="widget-header">
                     <h3>🍰 Sweet Weekly Bingo</h3>
@@ -78,11 +74,10 @@
 
         <!-- Kolom Kanan: Banner, Daftar Target, Aktivitas & Wishlist -->
         <section class="dashboard-content" id="target-section">
-            <!-- Banner Sambutan Manis -->
             <div class="welcome-banner">
                 <div class="banner-text">
                     <h2>Keep Glowing & Saving! 🌷</h2>
-                    <p>Bulan ini kamu sudah menyisihkan <strong>Rp1.250.000</strong>. Konsistensimu luar biasa manis!</p>
+                    <p>Bulan ini kamu sudah menyisihkan <strong id="banner-total-setoran">Rp1.250.000</strong>. Konsistensimu luar biasa manis!</p>
                 </div>
                 <div class="banner-illustration">🩰🦢🎀</div>
             </div>
@@ -144,9 +139,7 @@
             
             <button class="btn-secondary btn-block mt-lg">+ Buat Target Impian Baru ✨</button>
 
-            <!-- Bagian Tambahan agar Layar Lebar Penuh & Estetik -->
             <div class="bottom-widgets-grid mt-lg">
-                <!-- Widget Kiri: Aktivitas Terakhir -->
                 <div class="coquette-widget">
                     <div class="widget-header">
                         <h3>💌 Catatan Setoran Terakhir</h3>
@@ -176,7 +169,6 @@
                     </div>
                 </div>
 
-                <!-- Widget Kanan: Future Wishlist -->
                 <div class="coquette-widget">
                     <div class="widget-header">
                         <h3>🩰 Wishlist Berikutnya</h3>

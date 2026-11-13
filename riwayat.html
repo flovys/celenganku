@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat & Laporan 🎀 Celenganku</title>
-    <!-- Google Fonts untuk nuansa Coquette -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
@@ -25,7 +24,7 @@
             </nav>
 
             <div class="user-profile">
-                <button class="icon-btn" aria-label="Notifikasi">🔔</button>
+                <button class="icon-btn" id="btn-reset-data" title="Reset Data ke Awal" aria-label="Reset Data">🔄</button>
                 <div class="user-info">
                     <span class="greeting">Halo, Fikri! 🌸</span>
                 </div>
@@ -38,7 +37,6 @@
     <!-- MAIN DASHBOARD CONTENT -->
     <main class="dashboard-container riwayat-layout">
         
-        <!-- Header Halaman -->
         <div class="page-header">
             <div>
                 <h2>Riwayat & Laporan 💌</h2>
@@ -47,6 +45,7 @@
             <div class="date-picker">
                 <span>🌸</span>
                 <select class="select-clean">
+                    <option>Semua Waktu</option>
                     <option>Oktober 2026</option>
                     <option>September 2026</option>
                 </select>
@@ -60,7 +59,7 @@
                     <span class="icon-green">↙</span>
                     <span>Setoran Masuk</span>
                 </div>
-                <h3>Rp1.250.000</h3>
+                <h3 id="summary-setoran">Rp1.250.000</h3>
             </div>
             
             <div class="summary-card">
@@ -68,7 +67,7 @@
                     <span class="icon-red">↗</span>
                     <span>Penarikan</span>
                 </div>
-                <h3>Rp250.000</h3>
+                <h3 id="summary-penarikan">Rp250.000</h3>
             </div>
 
             <div class="summary-card bg-primary text-white">
@@ -76,26 +75,25 @@
                     <span>🎀 Arus Bersih</span>
                     <small>Setoran – penarikan</small>
                 </div>
-                <h3 class="text-large">+Rp1.000.000</h3>
+                <h3 class="text-large" id="summary-bersih">+Rp1.000.000</h3>
             </div>
         </section>
         
-        <p class="info-text muted">✨ Saldo awal Rp4.250.000 → saldo akhir Rp5.250.000. Ringkasan hanya menghitung transaksi berhasil.</p>
+        <p class="info-text muted" id="summary-info-text">✨ Saldo awal Rp4.250.000 → saldo akhir Rp5.250.000. Ringkasan hanya menghitung transaksi berhasil.</p>
 
         <!-- Detail Layout (Kiri: Alokasi, Kanan: Transaksi) -->
         <div class="details-layout">
             
-            <!-- Kolom Kiri: Alokasi Tabungan -->
             <aside>
                 <h3 class="section-title">🩰 Alokasi Tabungan</h3>
                 <div class="card allocation-card">
                     <div class="allocation-header">
                         <span class="muted">Dari total saldo saat ini</span>
-                        <strong>Rp5.250.000</strong>
+                        <strong id="riwayat-total-saldo">Rp5.250.000</strong>
                     </div>
                     
                     <div class="chart-container">
-                        <div class="donut-chart">
+                        <div class="donut-chart" id="alokasi-donut">
                             <div class="donut-inner">
                                 <strong>2</strong>
                                 <span>target 🎀</span>
@@ -107,8 +105,8 @@
                                 <div class="legend-info">
                                     <span class="muted">🦢 Dana Darurat</span>
                                     <div class="legend-value">
-                                        <strong>Rp3.000.000</strong>
-                                        <span class="text-primary">57,1%</span>
+                                        <strong id="alokasi-darurat-nominal">Rp3.000.000</strong>
+                                        <span class="text-primary" id="alokasi-darurat-persen">57,1%</span>
                                     </div>
                                 </div>
                             </div>
@@ -117,8 +115,8 @@
                                 <div class="legend-info">
                                     <span class="muted">💻 Laptop Impian</span>
                                     <div class="legend-value">
-                                        <strong>Rp2.250.000</strong>
-                                        <span class="text-primary">42,9%</span>
+                                        <strong id="alokasi-laptop-nominal">Rp2.250.000</strong>
+                                        <span class="text-primary" id="alokasi-laptop-persen">42,9%</span>
                                     </div>
                                 </div>
                             </div>
@@ -127,24 +125,24 @@
                 </div>
             </aside>
 
-            <!-- Kolom Kanan: Daftar Transaksi -->
             <section>
                 <div class="section-heading">
                     <h3 class="section-title">🌷 Daftar Transaksi</h3>
-                    <span class="badge">3 transaksi</span>
+                    <span class="badge" id="trx-count-badge">3 transaksi</span>
                 </div>
 
                 <div class="filters-container">
-                    <div class="filter-buttons">
-                        <button class="btn-chip active">Semua</button>
-                        <button class="btn-chip">Setor</button>
-                        <button class="btn-chip">Tarik</button>
+                    <div class="filter-buttons" id="filter-type-buttons">
+                        <button class="btn-chip active" data-filter="all">Semua</button>
+                        <button class="btn-chip" data-filter="setor">Setor</button>
+                        <button class="btn-chip" data-filter="tarik">Tarik</button>
                     </div>
                     <div class="filter-selects">
-                        <select class="input-select">
-                            <option>Semua target</option>
-                            <option>Dana Darurat</option>
-                            <option>Laptop Impian</option>
+                        <select class="input-select" id="filter-target-select">
+                            <option value="all">Semua target</option>
+                            <option value="Dana Darurat">Dana Darurat</option>
+                            <option value="Laptop Impian">Laptop Impian</option>
+                            <option value="Tabungan Umum">Tabungan Umum</option>
                         </select>
                         <select class="input-select">
                             <option>Semua status</option>
@@ -153,43 +151,8 @@
                     </div>
                 </div>
 
-                <div class="transaction-list">
-                    <h4 class="date-header">🌸 28 Oktober 2026</h4>
-                    
-                    <div class="transaction-item">
-                        <div class="trx-left">
-                            <div class="trx-icon bg-primary-light text-primary">↙</div>
-                            <div class="trx-details">
-                                <strong>Setor ke Dana Darurat 🦢</strong>
-                                <span class="muted">09.41 WIB</span>
-                            </div>
-                        </div>
-                        <strong class="text-primary">+Rp100.000</strong>
-                    </div>
-
-                    <div class="transaction-item">
-                        <div class="trx-left">
-                            <div class="trx-icon bg-primary-light text-primary">↙</div>
-                            <div class="trx-details">
-                                <strong>Setor ke Laptop Impian 💻</strong>
-                                <span class="muted">08.15 WIB</span>
-                            </div>
-                        </div>
-                        <strong class="text-primary">+Rp50.000</strong>
-                    </div>
-
-                    <h4 class="date-header mt-lg">🌸 25 Oktober 2026</h4>
-
-                    <div class="transaction-item">
-                        <div class="trx-left">
-                            <div class="trx-icon error-bg error-text">↗</div>
-                            <div class="trx-details">
-                                <strong>Tarik dari Dana Darurat</strong>
-                                <span class="muted">14.20 WIB</span>
-                            </div>
-                        </div>
-                        <strong>-Rp250.000</strong>
-                    </div>
+                <div class="transaction-list" id="riwayat-trx-list">
+                    <!-- Diisi oleh script.js -->
                 </div>
             </section>
         </div>
